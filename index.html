@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(249, 229, 202);
+        }
+        .container{
+            background-color: white;
+            width: 400px;
+            height: 800px;
+            padding: 30px;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 2px 2px 4px rgb(185, 145, 94);
+        }
+        .product-img{
+            width: 300px;
+            margin: 10px auto;
+            display: block;
+            padding:25px 30px;
+            border-radius: 50px;
+            background-color: burlywood;
+        }
+        .description-container{
+            text-align: center;
+        }
+        .product-title{
+            display: block;
+            font-size: 45px;
+        }
+        .product-describ{
+            display: block;
+            font-size: 25px;
+        }
+        .product-prise{
+            font-size: 20px;
+        }
+        .quantity-container{
+            display: flex;
+            font-size: 20px;
+            padding: 10px;
+            margin: 30px 90px;
+        }
+        .btn-quantity{
+            display: block;
+            border-radius: 50%;
+            border: none;
+            background-color: burlywood;
+            padding: 10px;
+            margin: 0px 25px;
+            width: 25px;
+            cursor: pointer;
+        }
+        .quantity{
+            font-size: 35px;
+        }
+        .btn-byeNow{
+            background-color: burlywood;
+            border-radius: 50px;
+            font-size: 25px;
+            border: none;
+            padding: 10px;
+            margin: auto 90px;
+            width: 160px;
+            box-shadow: 2px 2px 10px rgb(208, 166, 110);
+            cursor: pointer;
+        }
+        .show-quantity{
+            font-size: 25px;
+        }
+        .show-total{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./img/ice2.avif" class="product-img"/>
+
+        <div class="description-container">
+            <h1 class="product-title">Capechino icecreme</h1>
+            <p class="product-describ">Full enjoy with chocalate icecreme.Tasty and affordablr price</p>
+            <p class="product-prise"><b>Rs.100</b></p>
+            <p id="show-quantity">1*100</p>
+            <p id="show-total"><b></b></p>
+            <div class="quantity-container">
+                <img src="./img/minus.png" class="btn-quantity"  onclick="decrement()"/>
+                <span class="quantity" id="quantity-text">1</span>
+                <img src="./img/plus.png" class="btn-quantity"  onclick="increment()"/>
+            </div>
+            <button class="btn-byeNow">Buy Now</button>
+        </div>
+    </div>
+
+    <script>
+        function decrement(){
+            const element = document.getElementById("quantity-text");
+            const show_quantity = document.getElementById("show-quantity");
+            const show_total = document.getElementById("show-total");
+            let quantity = parseInt(element.innerText);
+            if(quantity>1){
+                element.innerText = --quantity;
+            }
+            else{
+                alert("Quantity should be more than 0");
+            }
+            show_quantity.innerText = `${quantity} * 100`;
+            show_total.innerText = `Total : ${quantity *100}`;
+        }
+        function increment(){
+            const element = document.getElementById("quantity-text");
+            const show_quantity = document.getElementById("show-quantity");
+            const show_total = document.getElementById("show-total");
+            let quantity = parseInt(element.innerText);
+            if(quantity<10){
+                element.innerText = ++quantity;
+            }
+            else{
+                alert("can't place order with more than 10 quantity");
+            }
+            show_quantity.innerText = `${quantity} * 100`;
+            show_total.innerText = `Total : ${quantity *100}`;
+        }
+    </script>
+</body>
+</html>
